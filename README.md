@@ -9,7 +9,6 @@ This project is a starting point for a Flutter application.
 
 ![Screenshot](https://developer.xavient.com/repo/hrawat/flutter_feed/src/master/assets/snaps/screenshot1.png)
 
-<img height="480px" width="350px" src="assets/snaps/screenshot1.png">
 
 A few resources to get you started if this is your first Flutter project:
 

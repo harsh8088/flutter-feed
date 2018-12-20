@@ -100,11 +100,12 @@ class _ProfileState extends State<ProfilePage> {
                 child: Card(
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: 8,
                     itemBuilder: (context, i) => Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Image.network(
-                              "https://cdn.pixabay.com/photo/2016/10/31/18/14/ice-1786311_960_720.jpg"),
+                            "https://cdn.pixabay.com/photo/2018/10/04/14/22/donut-3723751__340.jpg"
+                              ),
                         ),
                   ),
                 ),
@@ -137,7 +138,7 @@ class _ProfileState extends State<ProfilePage> {
                     height: 5.0,
                   ),
                   Text(
-                    "25 mins ago",
+                    "5 mins ago",
                   )
                 ],
               ),
@@ -166,7 +167,7 @@ class _ProfileState extends State<ProfilePage> {
                 child: Card(
                   elevation: 2.0,
                   child: Image.network(
-                    "https://cdn.pixabay.com/photo/2018/06/12/01/04/road-3469810_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2018/10/31/22/42/surprised-3786845__340.jpg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -182,6 +183,7 @@ class _ProfileState extends State<ProfilePage> {
             profileHeader(),
             followColumn(deviceSize),
             imagesCard(),
+            postCard(),
             postCard(),
           ],
         ),

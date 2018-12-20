@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feed/model/product.dart';
 
 class ProductViewModel {
-  
   List<Product> productsItems;
 
   ProductViewModel({this.productsItems});
@@ -12,7 +11,7 @@ class ProductViewModel {
             brand: "Levis",
             description: "Print T-shirt",
             image:
-                "https://mosaic02.ztat.net/vgs/media/pdp-zoom/LE/22/1D/02/2A/12/LE221D022-A12@16.1.jpg",
+                "https://cdn.pixabay.com/photo/2017/08/05/00/12/people-2581913__340.jpg",
             name: "THE PERFECT",
             price: "\u20B91999",
             rating: 4.0,
@@ -41,16 +40,16 @@ class ProductViewModel {
             brand: "adidas Performance",
             description: "Pool sliders",
             image:
-                "https://mosaic02.ztat.net/vgs/media/catalog-lg/AD/58/1D/00/9Q/12/AD581D009-Q12@13.jpg",
+                "https://image.shutterstock.com/image-photo/suited-man-posing-260nw-380188990.jpg",
             name: "AQUALETTE",
-            price: "\u20B91299",
+            price: "\u20B93299",
             rating: 5.0,
             totalReviews: 10),
         Product(
             brand: "Produkt",
             description: "Men's Shirt",
             image:
-                "https://mosaic01.ztat.net/vgs/media/pdp-zoom/PY/52/2D/01/FG/11/PY522D01F-G11@8.jpg",
+                "https://cdn.pixabay.com/photo/2017/03/24/19/48/jeans-2172032__340.jpg",
             name: "ROBI CHECK",
             price: "\u20B91649",
             rating: 4.5,
@@ -59,7 +58,7 @@ class ProductViewModel {
             brand: "adidas Originals",
             description: "Hoodie",
             image:
-                "https://mosaic01.ztat.net/vgs/media/pdp-zoom/AD/12/2S/07/QN/11/AD122S07Q-N11@8.jpg",
+                "https://cdn.pixabay.com/photo/2017/08/05/00/12/people-2581913__340.jpg",
             name: "TREF OVER HOOD",
             price: "\u20B9349",
             rating: 4.0,
@@ -68,7 +67,7 @@ class ProductViewModel {
             brand: "ION",
             description: "Hydration rucksack",
             image:
-                "https://mosaic01.ztat.net/vgs/media/packshot/pdp-zoom/N1/94/4E/00/4G/11/N1944E004-G11@10.jpg",
+                "https://image.shutterstock.com/image-photo/young-man-wearing-white-blank-260nw-328594940.jpg",
             name: "BACKPACK VILLAIN 4",
             price: "\u20B9699",
             rating: 4.8,
@@ -86,7 +85,7 @@ class ProductViewModel {
             brand: "YOURTURN",
             description: "Watch in budget",
             image:
-                "https://mosaic02.ztat.net/vgs/media/packshot/pdp-zoom/YO/15/2M/00/6Q/11/YO152M006-Q11@6.jpg",
+                "https://cdn.pixabay.com/photo/2017/11/02/14/26/model-2911330__340.jpg",
             name: "Watch",
             price: "\u20B91199",
             rating: 4.7,
@@ -95,7 +94,7 @@ class ProductViewModel {
             brand: "Vero Moda",
             description: "Day dress - black/off",
             image:
-                "https://mosaic01.ztat.net/vgs/media/pdp-zoom/VE/12/1C/1B/RQ/11/VE121C1BR-Q11@15.jpg",
+                "https://cdn.pixabay.com/photo/2016/03/27/22/05/businessman-1284463__340.jpg",
             name: "VMKANA",
             price: "\u20B92549",
             rating: 4.0,
@@ -104,8 +103,8 @@ class ProductViewModel {
             brand: "ONLY",
             description: "A-line skirt",
             image:
-                "https://mosaic01.ztat.net/vgs/media/pdp-zoom/ON/32/1B/0B/JG/11/ON321B0BJ-G11@8.jpg",
-            name: "ONLTHAI FRILL",
+                "https://image.shutterstock.com/image-photo/young-man-wearing-white-blank-260nw-328594940.jpg",
+            name: "THAI FRILL",
             price: "\u20B91299",
             rating: 4.4,
             totalReviews: 44),
@@ -118,5 +117,77 @@ class ProductViewModel {
             price: "\u20B9599",
             rating: 4.1,
             totalReviews: 22),
+        Product(
+            brand: "Vero Moda",
+            description: "Day dress - black/off",
+            image:
+                "https://cdn.pixabay.com/photo/2016/03/27/22/05/businessman-1284463__340.jpg",
+            name: "VMKANA",
+            price: "\u20B92549",
+            rating: 4.0,
+            totalReviews: 33),
+        Product(
+            brand: "Diesel",
+            description: "Straight leg jeans",
+            image:
+                "https://mosaic01.ztat.net/vgs/media/pdp-gallery/DI/12/2G/0H/5K/11/DI122G0H5-K11@10.jpg",
+            name: "THYTAN",
+            price: "\u20B9839",
+            rating: 4.2,
+            totalReviews: 28),
+        Product(
+            brand: "adidas Performance",
+            description: "Pool sliders",
+            image:
+                "https://image.shutterstock.com/image-photo/suited-man-posing-260nw-380188990.jpg",
+            name: "AQUALETTE",
+            price: "\u20B93299",
+            rating: 5.0,
+            totalReviews: 10),
+        Product(
+            brand: "Produkt",
+            description: "Men's Shirt",
+            image:
+                "https://cdn.pixabay.com/photo/2017/03/24/19/48/jeans-2172032__340.jpg",
+            name: "ROBI CHECK",
+            price: "\u20B91649",
+            rating: 4.5,
+            totalReviews: 0),
+        Product(
+            brand: "adidas Originals",
+            description: "Hoodie",
+            image:
+                "https://cdn.pixabay.com/photo/2017/08/05/00/12/people-2581913__340.jpg",
+            name: "TREF OVER HOOD",
+            price: "\u20B9349",
+            rating: 4.0,
+            totalReviews: 5),
+        Product(
+            brand: "YOURTURN",
+            description: "Watch in budget",
+            image:
+                "https://cdn.pixabay.com/photo/2017/11/02/14/26/model-2911330__340.jpg",
+            name: "Watch",
+            price: "\u20B91199",
+            rating: 4.7,
+            totalReviews: 120),
+        Product(
+            brand: "ION",
+            description: "Hydration rucksack",
+            image:
+                "https://image.shutterstock.com/image-photo/young-man-wearing-white-blank-260nw-328594940.jpg",
+            name: "BACKPACK VILLAIN 4",
+            price: "\u20B9699",
+            rating: 4.8,
+            totalReviews: 12),
+        Product(
+            brand: "Produkt",
+            description: "Men's Shirt",
+            image:
+                "https://cdn.pixabay.com/photo/2017/03/24/19/48/jeans-2172032__340.jpg",
+            name: "ROBI CHECK",
+            price: "\u20B91649",
+            rating: 4.5,
+            totalReviews: 0),
       ];
 }

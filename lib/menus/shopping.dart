@@ -130,7 +130,7 @@ class ShoppingPage extends StatelessWidget {
     return CommonScaffold(
       scaffoldKey: scaffoldKey,
       appTitle: "Products",
-      showDrawer: true,
+    //  showDrawer: true,
       showFAB: false,
       actionFirstIcon: Icons.shopping_cart,
       bodyData: bodyData(),

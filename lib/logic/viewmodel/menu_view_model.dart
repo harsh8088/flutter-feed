@@ -16,7 +16,14 @@ class MenuViewModel {
           image: UIData.timelineImage,
           items: [
             "Feed",
-            "Tweets",
+          ]),
+      Menu(
+          title: "Weather",
+          menuColor: Color(0xff7f5741),
+          icon: Icons.landscape,
+          image: UIData.timelineImage,
+          items: [
+            "Weather",
           ]),
       Menu(
           title: "Profile",
@@ -33,6 +40,14 @@ class MenuViewModel {
           image: UIData.shoppingImage,
           items: [
             "Shopping List",
+          ]),
+      Menu(
+          title: "Jokes",
+          menuColor: Color(0xff7f5741),
+          icon: Icons.sentiment_satisfied,
+          image: UIData.timelineImage,
+          items: [
+            "Jokes",
           ]),
       Menu(
           title: "Payment",

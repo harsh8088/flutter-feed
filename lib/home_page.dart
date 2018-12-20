@@ -135,8 +135,8 @@ class _HomePageState extends State<HomePage> {
               MediaQuery.of(_context).orientation == Orientation.portrait
                   ? 2
                   : 3,
-          mainAxisSpacing: 0.0,
-          crossAxisSpacing: 0.0,
+          mainAxisSpacing: 1.0,
+          crossAxisSpacing: 1.0,
           childAspectRatio: 1.0,
         ),
         delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget homeScaffold(BuildContext context) => Theme(
         data: Theme.of(context).copyWith(
-            //canvasColor: Colors.transparent,
+           // canvasColor: Colors.transparent,
             ),
         child: Scaffold(
             key: _scaffoldState,

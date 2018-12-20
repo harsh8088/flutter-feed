@@ -21,6 +21,8 @@ dependencies:
   firebase_auth:
   firebase_database:
   flutter_masked_text:
+  intl:
+  location:
 
 
 

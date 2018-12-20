@@ -4,17 +4,29 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class UIData {
+  //open weather api key
+  static const String ApiKey = "c48cc7ca56c6c4472a24c6604475b166";
+
+//weather image
+  static const String weatherClear =
+      "https://cdn.pixabay.com/photo/2012/06/08/06/19/sky-49520__340.jpg";
+  static const String weatherThunder =
+      "https://cdn.pixabay.com/photo/2015/09/23/08/16/thunder-953118__340.jpg";
+
+  static const String weatherSunny =
+      "https://cdn.pixabay.com/photo/2017/12/28/17/41/nature-3045780__340.jpg";
+
   //routes
   static const String mRoute = "/route";
   static const String homeRoute = "/home";
-  static const String profileOneRoute = "/View Profile";
+  static const String weatherRoute = "/Weather";
+
   static const String profileRoute = "/Profile";
   static const String notFoundRoute = "/No Search Result";
   static const String timelineOneRoute = "/Feed";
-  static const String settingsOneRoute = "/Device Settings";
+  static const String jokesRoute = "/Jokes";
   static const String shoppingRoute = "/Shopping List";
   static const String creditCardRoute = "/Credit Card";
-  static const String signUpRoute = "/Sign Up";
   static const String loginRoute = "/Login";
 
   //strings

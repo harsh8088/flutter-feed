@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feed/menus/credit_card_page.dart';
 import 'package:flutter_feed/fblogin/auth.dart';
+import 'package:flutter_feed/menus/jokes_page.dart';
 import 'package:flutter_feed/menus/login_page.dart';
+import 'package:flutter_feed/menus/weather_page.dart';
 import 'package:flutter_feed/root_page.dart';
 import 'package:flutter_feed/home_page.dart';
 import 'package:flutter_feed/menus/notfound_page.dart';
@@ -28,9 +30,11 @@ class MyApp extends StatelessWidget {
         UIData.profileRoute: (BuildContext context) =>
             ProfilePage(auth: new Auth()),
         UIData.timelineOneRoute: (BuildContext context) => TimelineOnePage(),
+        UIData.jokesRoute:(BuildContext context)=> JokesPage(),
         UIData.shoppingRoute: (BuildContext context) => ShoppingPage(),
         UIData.loginRoute: (BuildContext context) => LoginPage(),
         UIData.creditCardRoute: (BuildContext context) => CreditCardPage(),
+        UIData.weatherRoute:(BuildContext context)=> WeatherPage(),
       },
       onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
           builder: (context) => new NotFoundPage(

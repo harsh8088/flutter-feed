@@ -5,6 +5,7 @@ import 'package:flutter_feed/logic/bloc/post_bloc.dart';
 import 'package:flutter_feed/model/post.dart';
 import 'package:flutter_feed/ui_data.dart';
 import 'package:flutter_feed/widgets/common_divider.dart';
+import 'package:flutter_feed/widgets/common_scaffold.dart';
 import 'package:flutter_feed/widgets/label_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -152,22 +153,20 @@ class TimelineOnePage extends StatelessWidget {
     return StreamBuilder<List<Post>>(
         stream: postBloc.postItems,
         builder: (context, snapshot) {
-          return snapshot.hasData
-              ? CustomScrollView(
-                  slivers: <Widget>[
-                    appBar(),
-                    bodyList(snapshot.data),
-                  ],
-                )
-              : Center(child: CircularProgressIndicator());
+          return CustomScrollView(
+            slivers: <Widget>[
+              // appBar(),
+              bodyList(snapshot.data),
+            ],
+          );
         });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: CommonDrawer(auth:new Auth()),
-      body: bodySliverList(),
+    return CommonScaffold(
+      appTitle: "Feeds",
+      bodyData: bodySliverList(),
     );
   }
 }
