@@ -3,6 +3,7 @@ import 'package:flutter_feed/menus/credit_card_page.dart';
 import 'package:flutter_feed/fblogin/auth.dart';
 import 'package:flutter_feed/menus/jokes_page.dart';
 import 'package:flutter_feed/menus/login_page.dart';
+import 'package:flutter_feed/menus/map_page.dart';
 import 'package:flutter_feed/menus/weather_page.dart';
 import 'package:flutter_feed/root_page.dart';
 import 'package:flutter_feed/home_page.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_feed/menus/profile.dart';
 import 'package:flutter_feed/menus/shopping.dart';
 import 'package:flutter_feed/menus/timeline_one_page.dart';
 import 'package:flutter_feed/ui_data.dart';
+import 'package:flutter_feed/widgets/camera_page.dart';
 
 class MyApp extends StatelessWidget {
   final materialApp = MaterialApp(
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
         UIData.loginRoute: (BuildContext context) => LoginPage(),
         UIData.creditCardRoute: (BuildContext context) => CreditCardPage(),
         UIData.weatherRoute:(BuildContext context)=> WeatherPage(),
+        UIData.cameraRoute:(BuildContext context)=> CameraApp(),
+        UIData.mapsRoute:(BuildContext context)=>MapPage(),
       },
       onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
           builder: (context) => new NotFoundPage(

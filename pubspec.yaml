@@ -23,6 +23,8 @@ dependencies:
   flutter_masked_text:
   intl:
   location:
+  image_picker:
+  google_maps_flutter:
 
 
 

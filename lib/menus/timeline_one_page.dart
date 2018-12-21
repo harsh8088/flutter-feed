@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feed/fblogin/auth.dart';
-import 'package:flutter_feed/widgets/common_drawer.dart';
 import 'package:flutter_feed/logic/bloc/post_bloc.dart';
 import 'package:flutter_feed/model/post.dart';
 import 'package:flutter_feed/ui_data.dart';

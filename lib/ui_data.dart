@@ -28,6 +28,8 @@ class UIData {
   static const String shoppingRoute = "/Shopping List";
   static const String creditCardRoute = "/Credit Card";
   static const String loginRoute = "/Login";
+  static const String cameraRoute = "/Camera";
+  static const String mapsRoute = "/Maps";
 
   //strings
   static const String appName = "Flutter";
@@ -44,13 +46,14 @@ class UIData {
   static const String pkImage = "$imageDir/pk.jpeg";
   static const String profileImage = "$imageDir/profile.jpeg";
   static const String blankImage = "$imageDir/blank.jpg";
-  static const String dashboardImage = "$imageDir/dashboard.jpeg";
+  static const String cameraImage = "$imageDir/camera.jpeg";
   static const String loginImage = "$imageDir/login.jpg";
   static const String paymentImage = "$imageDir/payment.jpeg";
   static const String settingsImage = "$imageDir/setting.png";
   static const String shoppingImage = "$imageDir/shopping.jpeg";
   static const String timelineImage = "$imageDir/timeline.jpeg";
   static const String verifyImage = "$imageDir/verification.jpg";
+  static const String mapsImage="$imageDir/maps.jpeg";
 
   //login
   static const String enter_code_label = "Phone Number";

@@ -214,7 +214,7 @@ class _JokeState extends State<JokesPage> {
                     child: Image(
                       alignment: Alignment(1.0, 0.1),
                       image: NetworkImage(
-                        norrisData != null ? norrisData.icon_url : "",
+                        norrisData != null ? norrisData.iconUrl : "",
                       ),
                     ))
               ],
