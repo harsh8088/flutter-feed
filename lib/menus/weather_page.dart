@@ -101,7 +101,8 @@ class _WeatherPageState extends State<WeatherPage> {
       isLoading = true;
     });
 
-    Map<String, double> location;
+    // Map<String, double> location;
+    LocationData location;
 
     try {
       location = await _location.getLocation();
@@ -119,8 +120,8 @@ class _WeatherPageState extends State<WeatherPage> {
     }
 
     if (location != null) {
-      final lat = location['latitude'];
-      final lon = location['longitude'];
+      final lat = location.latitude;
+      final lon = location.longitude;
 
       final weatherResponse = await http.get(
           'https://api.openweathermap.org/data/2.5/weather?APPID=${UIData

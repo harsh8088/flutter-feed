@@ -18,7 +18,8 @@ class _MapPage extends State<MapPage> {
   Location _location = new Location();
   bool isLoaded;
   String error;
-  Map<String, double> location;
+  // Map<String, double> location;
+  LocationData location;
 
   @override
   void initState() {
@@ -32,7 +33,7 @@ class _MapPage extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Google Maps')),
       body: GoogleMap(
-        onMapCreated: isLoaded ? _onMapUpdated : _onMapCreated,
+        onMapCreated: isLoaded ? _onMapUpdated : _onMapCreated, initialCameraPosition: null,
       ),
     );
   }
@@ -45,7 +46,7 @@ class _MapPage extends State<MapPage> {
 
   void loadCurrentLocation() async {
     try {
-      location = await _location.getLocation();
+     location = await _location.getLocation();
     } on Exception catch (e) {
       error = e.toString();
     }
@@ -60,8 +61,8 @@ class _MapPage extends State<MapPage> {
   }
 
   _onMapUpdated(GoogleMapController controller) {
-    final lat = location['latitude'];
-    final lon = location['longitude'];
+    final lat = location.latitude;
+    final lon = location.longitude;
     controller.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
       bearing: 270.0,
       target: LatLng(lat, lon),
