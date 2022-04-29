@@ -14,7 +14,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class JokesPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _JokeState();
   }
 
@@ -23,27 +22,26 @@ class JokesPage extends StatefulWidget {
 }
 
 class _JokeState extends State<JokesPage> {
-  Size deviceSize;
+  late Size deviceSize;
   bool isLoading = false;
-  NorrisData norrisData;
+  NorrisData? norrisData;
 
   @override
   void initState() {
     super.initState();
-
     loadChuckNorris();
   }
 
   Widget appBarColumn(BuildContext context) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 18.0),
-          child: new Column(
+          child: Column(
             children: <Widget>[
-              new Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new IconButton(
-                    icon: new Icon(
+                  IconButton(
+                    icon: Icon(
                       defaultTargetPlatform == TargetPlatform.android
                           ? Icons.arrow_back
                           : Icons.arrow_back_ios,
@@ -53,13 +51,13 @@ class _JokeState extends State<JokesPage> {
                         ? Navigator.pop(context)
                         : null,
                   ),
-                  new ProfileTile(
+                  ProfileTile(
                     title: "Jokes",
                     subtitle: "Welcome to the Chuck Norris",
                     textColor: Colors.white,
                   ),
-                  new IconButton(
-                    icon: new Icon(
+                  IconButton(
+                    icon: Icon(
                       Icons.more_vert,
                       color: Colors.white,
                     ),
@@ -119,10 +117,10 @@ class _JokeState extends State<JokesPage> {
                     firstIcon: FontAwesomeIcons.solidUser,
                     firstLabel: "Explicit",
                     firstIconCircleColor: Colors.blue,
-                    secondIcon: FontAwesomeIcons.userFriends,
+                    secondIcon: FontAwesomeIcons.userGroup,
                     secondLabel: "Animal",
                     secondIconCircleColor: Colors.orange,
-                    thirdIcon: FontAwesomeIcons.mapMarkerAlt,
+                    thirdIcon: FontAwesomeIcons.locationDot,
                     thirdLabel: "Movie",
                     thirdIconCircleColor: Colors.purple,
                     fourthIcon: FontAwesomeIcons.locationArrow,
@@ -144,7 +142,7 @@ class _JokeState extends State<JokesPage> {
                     fourthIconCircleColor: Colors.amber,
                   ),
                   DashboardMenuRow(
-                    firstIcon: FontAwesomeIcons.footballBall,
+                    firstIcon: FontAwesomeIcons.football,
                     firstLabel: "Religion",
                     firstIconCircleColor: Colors.cyan,
                     secondIcon: FontAwesomeIcons.solidStar,
@@ -184,19 +182,18 @@ class _JokeState extends State<JokesPage> {
                       child: isLoading
                           ? CircularProgressIndicator(
                               strokeWidth: 2.0,
-                              valueColor:
-                                  new AlwaysStoppedAnimation(Colors.yellow),
+                              valueColor: AlwaysStoppedAnimation(Colors.yellow),
                             )
                           : IconButton(
-                              icon: new Icon(Icons.refresh),
+                              icon: Icon(Icons.refresh),
                               tooltip: 'Refresh',
                               onPressed: loadChuckNorris,
                               color: Colors.yellow,
                             ),
                     ),
-                    new Expanded(
+                    Expanded(
                       child: Text(
-                        norrisData != null ? norrisData.value : "",
+                        norrisData!.value!,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
@@ -213,9 +210,7 @@ class _JokeState extends State<JokesPage> {
                     alignment: Alignment(1.0, 0.0),
                     child: Image(
                       alignment: Alignment(1.0, 0.1),
-                      image: NetworkImage(
-                        norrisData != null ? norrisData.iconUrl : "",
-                      ),
+                      image: NetworkImage(norrisData!.iconUrl!),
                     ))
               ],
             ),
@@ -265,12 +260,11 @@ class _JokeState extends State<JokesPage> {
     });
 
     final httpResponse =
-        await http.get('https://api.chucknorris.io/jokes/random');
+        await http.get(Uri.parse('https://api.chucknorris.io/jokes/random'));
 
     if (httpResponse.statusCode == 200) {
       return setState(() {
-        norrisData = new NorrisData.fromJson(jsonDecode(httpResponse.body));
-
+        norrisData = NorrisData.fromJson(jsonDecode(httpResponse.body));
         isLoading = false;
       });
     } else {

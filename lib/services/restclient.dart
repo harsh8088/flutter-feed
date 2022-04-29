@@ -11,15 +11,15 @@ class RestClient {
 
   Future<MappedNetworkServiceResponse<T>> getAsync<T>(
       String resourcePath) async {
-    var response = await http.get(resourcePath);
+    var response = await http.get(Uri.parse(resourcePath));
     return processResponse<T>(response);
   }
 
   Future<MappedNetworkServiceResponse<T>> postAsync<T>(
       String resourcePath, dynamic data) async {
     var content = json.encoder.convert(data);
-    var response =
-        await http.post(resourcePath, body: content, headers: headers);
+    var response = await http.post(Uri.parse(resourcePath),
+        body: content, headers: headers);
     return processResponse<T>(response);
   }
 
@@ -30,13 +30,13 @@ class RestClient {
       var jsonResult = response.body;
       dynamic resultClass = jsonDecode(jsonResult);
 
-      return new MappedNetworkServiceResponse<T>(
+      return MappedNetworkServiceResponse<T>(
           mappedResult: resultClass,
-          networkServiceResponse: new NetworkServiceResponse<T>(success: true));
+          networkServiceResponse: NetworkServiceResponse<T>(success: true));
     } else {
       var errorResponse = response.body;
-      return new MappedNetworkServiceResponse<T>(
-          networkServiceResponse: new NetworkServiceResponse<T>(
+      return MappedNetworkServiceResponse<T>(
+          networkServiceResponse: NetworkServiceResponse<T>(
               success: false,
               message: "(${response.statusCode}) ${errorResponse.toString()}"));
     }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Menu {
-  String title;
-  IconData icon;
-  String image;
-  List<String> items;
-  BuildContext context;
+  String? title;
+  IconData? icon;
+  String? image;
+  List<String>? items;
+  BuildContext? context;
   Color menuColor;
 
   Menu(

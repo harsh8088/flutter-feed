@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 class WeatherItem extends StatelessWidget {
   final WeatherData weather;
 
-  WeatherItem({Key key, @required this.weather}) : super(key: key);
+  WeatherItem({Key? key, required this.weather}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +19,17 @@ class WeatherItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(weather.name, style: new TextStyle(color: Colors.black)),
+            Text(weather.name, style: TextStyle(color: Colors.black)),
             Text(weather.main,
-                style: new TextStyle(color: Colors.black, fontSize: 24.0)),
+                style: TextStyle(color: Colors.black, fontSize: 24.0)),
             Text('${weather.temp.toString()}°C',
-                style: new TextStyle(color: Colors.black)),
+                style: TextStyle(color: Colors.black)),
             Image.network(
                 'https://openweathermap.org/img/w/${weather.icon}.png'),
-            Text(new DateFormat.yMMMd().format(weather.date),
-                style: new TextStyle(color: Colors.black)),
-            Text(new DateFormat.Hm().format(weather.date),
-                style: new TextStyle(color: Colors.black)),
+            Text(DateFormat.yMMMd().format(weather.date),
+                style: TextStyle(color: Colors.black)),
+            Text(DateFormat.Hm().format(weather.date),
+                style: TextStyle(color: Colors.black)),
           ],
         ),
       ),
@@ -42,7 +42,7 @@ class WeatherItem extends StatelessWidget {
       );
 
   //stack 2/3
-  Widget weatherColor() => new Container(
+  Widget weatherColor() => Container(
         decoration: BoxDecoration(boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black.withOpacity(0.8),
@@ -57,17 +57,17 @@ class WeatherItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(weather.name, style: new TextStyle(color: Colors.black)),
+            Text(weather.name, style: TextStyle(color: Colors.black)),
             Text(weather.main,
-                style: new TextStyle(color: Colors.black, fontSize: 24.0)),
+                style: TextStyle(color: Colors.black, fontSize: 24.0)),
             Text('${weather.temp.toString()}°F',
-                style: new TextStyle(color: Colors.black)),
+                style: TextStyle(color: Colors.black)),
             Image.network(
                 'https://openweathermap.org/img/w/${weather.icon}.png'),
-            Text(new DateFormat.yMMMd().format(weather.date),
-                style: new TextStyle(color: Colors.black)),
-            Text(new DateFormat.Hm().format(weather.date),
-                style: new TextStyle(color: Colors.black)),
+            Text(DateFormat.yMMMd().format(weather.date),
+                style: TextStyle(color: Colors.black)),
+            Text(DateFormat.Hm().format(weather.date),
+                style: TextStyle(color: Colors.black)),
           ],
         ),
       );

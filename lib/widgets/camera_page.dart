@@ -15,20 +15,19 @@ class CameraApp extends StatefulWidget {
 class _ImagePickerState extends State<CameraApp> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return AlertDialog(
-      content: new SingleChildScrollView(
-        child: new ListBody(
+      content: SingleChildScrollView(
+        child: ListBody(
           children: <Widget>[
             GestureDetector(
-              child: new Text('Take a picture'),
+              child: Text('Take a picture'),
               onTap: openCamera,
             ),
             Padding(
               padding: EdgeInsets.all(8.0),
             ),
             GestureDetector(
-              child: new Text('Select from gallery'),
+              child: Text('Select from gallery'),
               onTap: openGallery,
             ),
           ],
@@ -64,14 +63,14 @@ class _ImagePickerState extends State<CameraApp> {
   }
 
   void openCamera() async {
-    var picture = await ImagePicker.pickImage(
+    var picture = await ImagePicker().getImage(
       source: ImageSource.camera,
     );
     print(picture);
   }
 
   void openGallery() async {
-    var gallery = await ImagePicker.pickImage(
+    var gallery = await ImagePicker().getImage(
       source: ImageSource.gallery,
     );
     print(gallery);

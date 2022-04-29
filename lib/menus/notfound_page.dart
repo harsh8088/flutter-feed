@@ -7,7 +7,7 @@ class NotFoundPage extends StatelessWidget {
   final title;
   final message;
   final IconData icon;
-  final String image;
+  final String? image;
   final iconColor;
 
   NotFoundPage(

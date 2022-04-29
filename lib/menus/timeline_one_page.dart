@@ -13,7 +13,7 @@ class TimelineOnePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           CircleAvatar(
-            backgroundImage: NetworkImage(post.personImage),
+            backgroundImage: NetworkImage(post.personImage!),
           ),
           Expanded(
               child: Padding(
@@ -23,18 +23,18 @@ class TimelineOnePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  post.personName,
+                  post.personName!,
                   style: Theme.of(context)
                       .textTheme
-                      .body1
-                      .apply(fontWeightDelta: 700),
+                      .bodyText1
+                      !.apply(fontWeightDelta: 700),
                 ),
                 SizedBox(
                   height: 5.0,
                 ),
                 Text(
-                  post.address,
-                  style: Theme.of(context).textTheme.caption.apply(
+                  post.address!,
+                  style: Theme.of(context).textTheme.caption!.apply(
                       fontFamily: UIData.ralewayFont, color: Colors.pink),
                 )
               ],
@@ -60,7 +60,7 @@ class TimelineOnePage extends StatelessWidget {
               iconColor: Colors.blue,
             ),
             Text(
-              post.postTime,
+              post.postTime!,
               style: TextStyle(fontFamily: UIData.ralewayFont),
             )
           ],
@@ -80,7 +80,7 @@ class TimelineOnePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              post.message,
+              post.message!,
               style: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontFamily: UIData.ralewayFont),
@@ -91,7 +91,7 @@ class TimelineOnePage extends StatelessWidget {
           ),
           post.messageImage != null
               ? Image.network(
-                  post.messageImage,
+                  post.messageImage!,
                   fit: BoxFit.cover,
                 )
               : Container(),
@@ -134,7 +134,7 @@ class TimelineOnePage extends StatelessWidget {
         forceElevated: true,
         pinned: true,
         floating: true,
-        bottom: bottomBar(),
+        flexibleSpace: bottomBar(),
       );
 
   Widget bodyList(List<Post> posts) => SliverList(
@@ -154,7 +154,7 @@ class TimelineOnePage extends StatelessWidget {
           return CustomScrollView(
             slivers: <Widget>[
               // appBar(),
-              bodyList(snapshot.data),
+              bodyList(snapshot.data!),
             ],
           );
         });

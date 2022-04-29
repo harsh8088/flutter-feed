@@ -5,7 +5,6 @@ import 'package:location/location.dart';
 class MapPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MapPage();
   }
 
@@ -14,16 +13,15 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPage extends State<MapPage> {
-  GoogleMapController mapController;
+  late GoogleMapController mapController;
   Location _location = new Location();
-  bool isLoaded;
-  String error;
+  late bool isLoaded=false;
+  late String? error;
   // Map<String, double> location;
-  LocationData location;
+  late LocationData location;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadCurrentLocation();
   }
@@ -33,7 +31,8 @@ class _MapPage extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Google Maps')),
       body: GoogleMap(
-        onMapCreated: isLoaded ? _onMapUpdated : _onMapCreated, initialCameraPosition: null,
+        onMapCreated: isLoaded ? _onMapUpdated : _onMapCreated,
+        initialCameraPosition: CameraPosition(target: LatLng(0.0, 0.0)),
       ),
     );
   }
@@ -46,7 +45,7 @@ class _MapPage extends State<MapPage> {
 
   void loadCurrentLocation() async {
     try {
-     location = await _location.getLocation();
+      location = await _location.getLocation();
     } on Exception catch (e) {
       error = e.toString();
     }
@@ -65,7 +64,7 @@ class _MapPage extends State<MapPage> {
     final lon = location.longitude;
     controller.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
       bearing: 270.0,
-      target: LatLng(lat, lon),
+      target: LatLng(lat!, lon!),
       tilt: 30.0,
       zoom: 17.0,
     )));

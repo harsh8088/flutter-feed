@@ -13,23 +13,24 @@ import 'package:flutter_feed/widgets/common_drawer.dart';
 import 'package:flutter_feed/widgets/profile_tile.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.auth, this.onSignedOut}) : super(key: key);
+  HomePage({ Key? key, required this.auth,  this.onSignedOut})
+      : super(key: key);
 
   final AuthImpl auth;
-  final VoidCallback onSignedOut;
+  final VoidCallback? onSignedOut;
 
   @override
-  State<StatefulWidget> createState() => new _HomePageState();
+  State<StatefulWidget> createState() =>  _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> todoList = List();
+  List<String> todoList = List.empty(growable: true);
 
   //String todo;
-  Size deviceSize;
+  Size? deviceSize;
   final _scaffoldState = GlobalKey<ScaffoldState>();
 
-  BuildContext _context;
+  BuildContext? _context;
 
   final FirebaseDatabase database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   //menuStack
   Widget menuStack(BuildContext context, Menu menu) => InkWell(
         onTap: () {
-          Navigator.pushNamed(context, "/${menu.items[0]}");
+          Navigator.pushNamed(context, "/${menu.items![0]}");
           //  _showModalBottomSheet(context, menu);
         },
         splashColor: Colors.orange,
@@ -68,12 +69,12 @@ class _HomePageState extends State<HomePage> {
 
   //stack 1/3
   Widget menuImage(Menu menu) => Image.asset(
-        menu.image,
+        menu.image!,
         fit: BoxFit.cover,
       );
 
   //stack 2/3
-  Widget menuColor() => new Container(
+  Widget menuColor() =>  Container(
         decoration: BoxDecoration(boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black.withOpacity(0.8),
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
             height: 10.0,
           ),
           Text(
-            menu.title,
+            menu.title!,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           )
         ],
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
           title: Row(
             children: <Widget>[
               FlutterLogo(
-                colors: Colors.yellow,
+                // colors: Colors.yellow,
                 textColor: Colors.white,
               ),
               SizedBox(
@@ -132,7 +133,7 @@ class _HomePageState extends State<HomePage> {
   Widget bodyGrid(List<Menu> menu) => SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount:
-              MediaQuery.of(_context).orientation == Orientation.portrait
+              MediaQuery.of(_context!).orientation == Orientation.portrait
                   ? 2
                   : 3,
           mainAxisSpacing: 1.0,
@@ -146,7 +147,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget homeScaffold(BuildContext context) => Theme(
         data: Theme.of(context).copyWith(
-           // canvasColor: Colors.transparent,
+            // canvasColor: Colors.transparent,
             ),
         child: Scaffold(
             key: _scaffoldState,
@@ -164,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               ? CustomScrollView(
                   slivers: <Widget>[
                     appBar(),
-                    bodyGrid(snapshot.data),
+                    bodyGrid(snapshot.data!),
                   ],
                 )
               : Center(child: CircularProgressIndicator());
@@ -199,9 +200,9 @@ class _HomePageState extends State<HomePage> {
             clipBehavior: Clip.antiAlias,
             color: Colors.white,
             shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.only(
-                    topLeft: new Radius.circular(15.0),
-                    topRight: new Radius.circular(15.0))),
+                borderRadius:  BorderRadius.only(
+                    topLeft:  Radius.circular(15.0),
+                    topRight:  Radius.circular(15.0))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               mainAxisSize: MainAxisSize.max,
@@ -210,19 +211,18 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: ListView.builder(
                     shrinkWrap: false,
-                    itemCount: menu.items.length,
+                    itemCount: menu.items!.length,
                     itemBuilder: (context, i) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: ListTile(
-                              title: Text(
-                                menu.items[i],
-                              ),
-                              onTap: () {
-                                Navigator.pop(context);
-                                Navigator.pushNamed(
-                                    context, "/${menu.items[i]}");
-                              }),
-                        ),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ListTile(
+                          title: Text(
+                            menu.items![i],
+                          ),
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, "/${menu.items![i]}");
+                          }),
+                    ),
                   ),
                 ),
                 MyAboutTile()
@@ -230,26 +230,26 @@ class _HomePageState extends State<HomePage> {
             )));
   }
 
-  void _onEntryChanged(Event event) {
-    var oldEntry = todoList.singleWhere((entry) {
-      //  return entry.key == event.snapshot.key;
-    });
+  // void _onEntryChanged(Event event) {
+  //   var oldEntry = todoList.singleWhere((entry) {
+  //     //  return entry.key == event.snapshot.key;
+  //   });
 
-    setState(() {
-      //   todoList[todoList.indexOf(oldEntry)] = Todo.fromSnapshot(event.snapshot);
-    });
-  }
+  //   setState(() {
+  //     //   todoList[todoList.indexOf(oldEntry)] = Todo.fromSnapshot(event.snapshot);
+  //   });
+  // }
 
-  void _onEntryAdded(Event event) {
-    setState(() {
-      //  todoList.add(Todo.fromSnapshot(event.snapshot));
-    });
-  }
+  // void _onEntryAdded(Event event) {
+  //   setState(() {
+  //     //  todoList.add(Todo.fromSnapshot(event.snapshot));
+  //   });
+  // }
 
   void _signOut() async {
     try {
       await widget.auth.signOut();
-      widget.onSignedOut();
+      widget.onSignedOut!();
     } catch (e) {
       print(e);
     }
@@ -262,19 +262,19 @@ class _HomePageState extends State<HomePage> {
   void _readData() {
     setState(() {
       Completer<String> completer = new Completer<String>();
-      database
-          .reference()
-          .child("message")
-          .once()
-          .then((DataSnapshot snapshot) {
-        Map<dynamic, dynamic> list = snapshot.value;
-        print("Values from db is ${list.values}");
-      });
+      DataSnapshot snapshot;
+      database.reference().child("message").once().then((value) => {
+            // snapshot = value.snapshot;
+          });
+      //     .then((DataSnapshot snapshot) async {
+      //   Map<dynamic, dynamic> list = snapshot.value;
+      //   print("Values from db is ${list.values}");
+      // });
     });
   }
 
   void handleSubmit() {
-    final FormState form = formKey.currentState;
+    final FormState form = formKey.currentState!;
     if (form.validate()) {
       form.save();
       form.reset();
@@ -286,8 +286,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     _context = context;
     deviceSize = MediaQuery.of(context).size;
-    return defaultTargetPlatform == TargetPlatform.iOS
-        ? null
-        : homeScaffold(context);
+    // return defaultTargetPlatform == TargetPlatform.iOS
+    //     ? null
+    //     : homeScaffold(context);
+    return homeScaffold(context);
   }
 }

@@ -4,8 +4,8 @@ import 'package:flutter_feed/model/product.dart';
 import 'package:flutter_feed/widgets/common_scaffold.dart';
 
 class ShoppingPage extends StatelessWidget {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  BuildContext _context;
+  final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+  late BuildContext _context;
 
   //stack1
   Widget imageStack(String img) => Image.network(
@@ -27,13 +27,13 @@ class ShoppingPage extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    product.name,
+                    product.name!,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                Text(product.price,
+                Text(product.price!,
                     style: TextStyle(
                         color: Colors.yellow,
                         fontSize: 18.0,
@@ -90,9 +90,9 @@ class ShoppingPage extends StatelessWidget {
                       child: Stack(
                         fit: StackFit.expand,
                         children: <Widget>[
-                          imageStack(product.image),
+                          imageStack(product.image!),
                           descStack(product),
-                          ratingStack(product.rating),
+                          ratingStack(product.rating!),
                         ],
                       ),
                     ),
@@ -107,13 +107,13 @@ class ShoppingPage extends StatelessWidget {
         stream: productBloc.productItems,
         builder: (context, snapshot) {
           return snapshot.hasData
-              ? productGrid(snapshot.data)
+              ? productGrid(snapshot.data!)
               : Center(child: CircularProgressIndicator());
         });
   }
 
   void showSnackBar() {
-    scaffoldKey.currentState.showSnackBar(SnackBar(
+    scaffoldKey.currentState!.showSnackBar(SnackBar(
       content: Text(
         "Added to cart.",
       ),

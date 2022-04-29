@@ -5,23 +5,23 @@ import 'package:flutter_feed/fblogin/auth.dart';
 import 'package:flutter_feed/ui_data.dart';
 
 class CommonDrawer extends StatefulWidget {
-  CommonDrawer({Key key, this.auth, this.onSignedOut}) : super(key: key);
+  CommonDrawer({Key? key, this.auth, this.onSignedOut}) : super(key: key);
 
-  final AuthImpl auth;
-  final VoidCallback onSignedOut;
+  final AuthImpl? auth;
+  final VoidCallback? onSignedOut;
 
   @override
-  State<StatefulWidget> createState() => new _CommonDrawer();
+  State<StatefulWidget> createState() => _CommonDrawer();
 }
 
 class _CommonDrawer extends State<CommonDrawer> {
-  FirebaseUser firebaseUser;
+  late User firebaseUser;
 
   @override
   void initState() {
-    widget.auth.getCurrentUser().then((user) {
+    widget.auth!.getCurrentUser().then((user) {
       setState(() {
-        firebaseUser = user?.uid == null ? null : user;
+        firebaseUser = (user?.uid == null ? null : user)!;
       });
     });
   }
@@ -39,11 +39,11 @@ class _CommonDrawer extends State<CommonDrawer> {
             accountEmail: Text(
               firebaseUser.email.toString(),
             ),
-            currentAccountPicture: new CircleAvatar(
-              backgroundImage: new AssetImage(UIData.pkImage),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: AssetImage(UIData.pkImage),
             ),
           ),
-          new ListTile(
+          ListTile(
             title: Text(
               "Profile",
               style: TextStyle(
@@ -59,7 +59,7 @@ class _CommonDrawer extends State<CommonDrawer> {
               Navigator.pop(context);
             },
           ),
-          new ListTile(
+          ListTile(
             title: Text(
               "Shopping",
               style: TextStyle(
@@ -75,13 +75,15 @@ class _CommonDrawer extends State<CommonDrawer> {
               Navigator.pop(context);
             },
           ),
-          new ListTile(
+          ListTile(
             onTap: () {
               Navigator.pop(context);
             },
             title: Text(
               "Dashboard",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0,
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.0,
                   color: Colors.black.withOpacity(0.7)),
             ),
             leading: Icon(
@@ -89,10 +91,12 @@ class _CommonDrawer extends State<CommonDrawer> {
               color: Colors.red,
             ),
           ),
-          new ListTile(
+          ListTile(
             title: Text(
               "Timeline",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0,
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.0,
                   color: Colors.black.withOpacity(0.7)),
             ),
             leading: Icon(
@@ -104,10 +108,12 @@ class _CommonDrawer extends State<CommonDrawer> {
             },
           ),
           Divider(),
-          new ListTile(
+          ListTile(
             title: Text(
               "Settings",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0,
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.0,
                   color: Colors.black.withOpacity(0.7)),
             ),
             leading: Icon(
@@ -119,11 +125,13 @@ class _CommonDrawer extends State<CommonDrawer> {
             },
           ),
           Divider(),
-          new ListTile(
+          ListTile(
             onTap: _signOut,
             title: Text(
               "Logout",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0,
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.0,
                   color: Colors.black.withOpacity(0.7)),
             ),
             leading: Icon(
@@ -140,8 +148,8 @@ class _CommonDrawer extends State<CommonDrawer> {
 
   void _signOut() async {
     try {
-      await widget.auth.signOut();
-      return widget.onSignedOut();
+      await widget.auth!.signOut();
+      return widget.onSignedOut!();
 //      Navigator.popAndPushNamed(context, UIData.loginRoute);
     } catch (e) {
       print(e);

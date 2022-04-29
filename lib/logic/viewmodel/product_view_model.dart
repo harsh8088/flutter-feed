@@ -4,7 +4,7 @@ import 'package:flutter_feed/model/product.dart';
 class ProductViewModel {
   List<Product> productsItems;
 
-  ProductViewModel({this.productsItems});
+  ProductViewModel({required this.productsItems});
 
   getProducts() => <Product>[
         Product(

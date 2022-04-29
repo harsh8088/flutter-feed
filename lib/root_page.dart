@@ -6,10 +6,10 @@ import 'package:flutter_feed/home_page.dart';
 class RootPage extends StatefulWidget {
   RootPage({this.auth});
 
-  final AuthImpl auth;
+  final AuthImpl? auth;
 
   @override
-  State<StatefulWidget> createState() => new _RootPageState();
+  State<StatefulWidget> createState() => _RootPageState();
 }
 
 enum AuthStatus {
@@ -24,7 +24,7 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
-    widget.auth.getCurrentUser().then((user) {
+    widget.auth!.getCurrentUser().then((user) {
       setState(() {
         authStatus =
             user?.uid == null ? AuthStatus.NOT_SIGNED_IN : AuthStatus.SIGNED_IN;
@@ -59,13 +59,13 @@ class _RootPageState extends State<RootPage> {
       case AuthStatus.NOT_DETERMINED:
       //return _buildWaitingScreen();
       case AuthStatus.NOT_SIGNED_IN:
-        return new LoginPage(
+        return LoginPage(
           auth: widget.auth,
           onSignedIn: _signedIn,
         );
       case AuthStatus.SIGNED_IN:
-        return new HomePage(
-          auth: widget.auth,
+        return HomePage(
+          auth: widget.auth!,
           onSignedOut: _signedOut,
         );
     }

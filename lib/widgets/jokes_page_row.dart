@@ -3,21 +3,21 @@ import 'package:flutter_feed/widgets/label_below_icon.dart';
 
 class DashboardMenuRow extends StatelessWidget {
   final firstLabel;
-  final IconData firstIcon;
+  final IconData? firstIcon;
   final firstIconCircleColor;
   final secondLabel;
-  final IconData secondIcon;
+  final IconData? secondIcon;
   final secondIconCircleColor;
   final thirdLabel;
-  final IconData thirdIcon;
+  final IconData? thirdIcon;
   final thirdIconCircleColor;
   final fourthLabel;
-  final IconData fourthIcon;
+  final IconData? fourthIcon;
   final fourthIconCircleColor;
   final onPressed;
 
   const DashboardMenuRow(
-      {Key key,
+      {Key? key,
       this.firstLabel,
       this.firstIcon,
       this.firstIconCircleColor,

@@ -3,7 +3,7 @@ import 'package:flutter_feed/ui_data.dart';
 
 class LabelBelowIcon extends StatelessWidget {
   final label;
-  final IconData icon;
+  final IconData? icon;
   final iconColor;
   final onPressed;
   final circleColor;

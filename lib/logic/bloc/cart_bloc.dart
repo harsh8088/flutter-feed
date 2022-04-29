@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:flutter_feed/logic/viewmodel/cart_view_model.dart';
 import 'package:flutter_feed/model/product.dart';
 
-
 class CartBloc {
-  CartViewModel _cartViewModel;
+  late CartViewModel _cartViewModel;
   final additionalController = StreamController<bool>();
   final subtractionController = StreamController<bool>();
   final countController = StreamController<int>();
@@ -21,17 +20,17 @@ class CartBloc {
 
   void onAdd(bool done) {
     _cartViewModel.addQuantity();
-    countController.add(_cartViewModel.totalQuantity);
+    countController.add(_cartViewModel.totalQuantity!);
   }
 
   void onDelete(bool done) {
-    _cartViewModel.deleteQuantity();
-    countController.add(_cartViewModel.totalQuantity);
+    // _cartViewModel.deleteQuantity();
+    countController.add(_cartViewModel.totalQuantity!);
   }
 
   void dispose() {
-    additionalController?.close();
-    subtractionController?.close();
-    countController?.close();
+    additionalController.close();
+    subtractionController.close();
+    countController.close();
   }
 }

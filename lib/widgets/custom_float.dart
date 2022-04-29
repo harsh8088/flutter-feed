@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feed/ui_data.dart';
 
 class CustomFloat extends StatelessWidget {
-  final IconData icon;
-  final Widget builder;
-  final VoidCallback qrCallback;
+  final IconData? icon;
+  final Widget? builder;
+  final VoidCallback? qrCallback;
   final isMini;
 
   CustomFloat({this.icon, this.builder, this.qrCallback, this.isMini = false});
@@ -16,8 +16,8 @@ class CustomFloat extends StatelessWidget {
       mini: isMini,
       onPressed: qrCallback,
       child: Ink(
-        decoration: new BoxDecoration(
-            gradient: new LinearGradient(colors: UIData.kitGradients)),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: UIData.kitGradients)),
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[

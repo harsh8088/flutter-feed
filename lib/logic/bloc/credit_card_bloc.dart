@@ -50,9 +50,9 @@ class CreditCardBloc {
   }
 
   void dispose() {
-    ccInputController?.close();
-    cvvInputController?.close();
-    expInputController?.close();
-    nameInputController?.close();
+    ccInputController.close();
+    cvvInputController.close();
+    expInputController.close();
+    nameInputController.close();
   }
 }

@@ -1,13 +1,13 @@
+import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feed/logic/bloc/credit_card_bloc.dart';
 import 'package:flutter_feed/ui_data.dart';
 import 'package:flutter_feed/widgets/profile_tile.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CreditCardPage extends StatelessWidget {
-  BuildContext _context;
-  CreditCardBloc cardBloc;
+  BuildContext? _context;
+  CreditCardBloc? cardBloc;
   MaskedTextController ccMask =
       MaskedTextController(mask: "0000 0000 0000 0000");
   MaskedTextController expMask = MaskedTextController(mask: "00/00");
@@ -18,7 +18,7 @@ class CreditCardPage extends StatelessWidget {
         ),
       );
   Widget creditCardWidget() {
-    var deviceSize = MediaQuery.of(_context).size;
+    var deviceSize = MediaQuery.of(_context!).size;
     return Container(
       height: deviceSize.height * 0.3,
       color: Colors.grey.shade300,
@@ -41,7 +41,7 @@ class CreditCardPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              MediaQuery.of(_context).orientation == Orientation.portrait
+              MediaQuery.of(_context!).orientation == Orientation.portrait
                   ? cardEntries()
                   : FittedBox(
                       child: cardEntries(),
@@ -59,10 +59,10 @@ class CreditCardPage extends StatelessWidget {
                 right: 10.0,
                 bottom: 10.0,
                 child: StreamBuilder<String>(
-                  stream: cardBloc.nameOutputStream,
+                  stream: cardBloc!.nameOutputStream,
                   initialData: "Your Name",
                   builder: (context, snapshot) => Text(
-                        snapshot.data.length > 0 ? snapshot.data : "Your Name",
+                        snapshot.data!.length > 0 ? snapshot.data! : "Your Name",
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: UIData.ralewayFont,
@@ -84,15 +84,15 @@ class CreditCardPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             StreamBuilder<String>(
-                stream: cardBloc.ccOutputStream,
+                stream: cardBloc!.ccOutputStream,
                 initialData: "**** **** **** ****",
                 builder: (context, snapshot) {
-                  snapshot.data.length > 0
-                      ? ccMask.updateText(snapshot.data)
+                  snapshot.data!.length > 0
+                      ? ccMask.updateText(snapshot.data!)
                       : null;
                   return Text(
-                    snapshot.data.length > 0
-                        ? snapshot.data
+                    snapshot.data!.length > 0
+                        ? snapshot.data!
                         : "**** **** **** ****",
                     style: TextStyle(color: Colors.white, fontSize: 22.0),
                   );
@@ -101,30 +101,30 @@ class CreditCardPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 StreamBuilder<String>(
-                    stream: cardBloc.expOutputStream,
+                    stream: cardBloc!.expOutputStream,
                     initialData: "MM/YY",
                     builder: (context, snapshot) {
-                      snapshot.data.length > 0
-                          ? expMask.updateText(snapshot.data)
+                      snapshot.data!.length > 0
+                          ? expMask.updateText(snapshot.data!)
                           : null;
                       return ProfileTile(
                         textColor: Colors.white,
                         title: "Expiry",
                         subtitle:
-                            snapshot.data.length > 0 ? snapshot.data : "MM/YY",
+                            snapshot.data!.length > 0 ? snapshot.data : "MM/YY",
                       );
                     }),
                 SizedBox(
                   width: 30.0,
                 ),
                 StreamBuilder<String>(
-                    stream: cardBloc.cvvOutputStream,
+                    stream: cardBloc!.cvvOutputStream,
                     initialData: "***",
                     builder: (context, snapshot) => ProfileTile(
                           textColor: Colors.white,
                           title: "CVV",
                           subtitle:
-                              snapshot.data.length > 0 ? snapshot.data : "***",
+                              snapshot.data!.length > 0 ? snapshot.data : "***",
                         )),
               ],
             ),
@@ -143,7 +143,7 @@ class CreditCardPage extends StatelessWidget {
               maxLength: 19,
               style: TextStyle(
                   fontFamily: UIData.ralewayFont, color: Colors.black),
-              onChanged: (out) => cardBloc.ccInputSink.add(ccMask.text),
+              onChanged: (out) => cardBloc!.ccInputSink.add(ccMask.text),
               decoration: InputDecoration(
                   labelText: "Credit Card Number",
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -155,7 +155,7 @@ class CreditCardPage extends StatelessWidget {
               maxLength: 5,
               style: TextStyle(
                   fontFamily: UIData.ralewayFont, color: Colors.black),
-              onChanged: (out) => cardBloc.expInputSink.add(expMask.text),
+              onChanged: (out) => cardBloc!.expInputSink.add(expMask.text),
               decoration: InputDecoration(
                   labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -168,7 +168,7 @@ class CreditCardPage extends StatelessWidget {
               maxLength: 3,
               style: TextStyle(
                   fontFamily: UIData.ralewayFont, color: Colors.black),
-              onChanged: (out) => cardBloc.cvvInputSink.add(out),
+              onChanged: (out) => cardBloc!.cvvInputSink.add(out),
               decoration: InputDecoration(
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
                   labelText: "CVV",
@@ -179,7 +179,7 @@ class CreditCardPage extends StatelessWidget {
               maxLength: 20,
               style: TextStyle(
                   fontFamily: UIData.ralewayFont, color: Colors.black),
-              onChanged: (out) => cardBloc.nameInputSink.add(out),
+              onChanged: (out) => cardBloc!.nameInputSink.add(out),
               decoration: InputDecoration(
                   labelStyle: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -214,7 +214,7 @@ class CreditCardPage extends StatelessWidget {
     _context = context;
     cardBloc = CreditCardBloc();
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         centerTitle: false,
         title: Text("Credit Card"),

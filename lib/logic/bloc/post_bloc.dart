@@ -5,7 +5,7 @@ import 'package:flutter_feed/model/post.dart';
 
 
 class PostBloc {
-  final PostViewModel postViewModel = PostViewModel();
+  final PostViewModel postViewModel = PostViewModel(postItems: []);
   final postController = StreamController<List<Post>>();
   final fabController = StreamController<bool>();
   final fabVisibleController = StreamController<bool>();
@@ -22,8 +22,8 @@ class PostBloc {
   }
 
   void dispose() {
-    postController?.close();
-    fabController?.close();
-    fabVisibleController?.close();
+    postController.close();
+    fabController.close();
+    fabVisibleController.close();
   }
 }

@@ -6,7 +6,7 @@ import 'package:flutter_feed/ui_data.dart';
 
 class CommonScaffold extends StatelessWidget {
   final appTitle;
-  final Widget bodyData;
+  final Widget? bodyData;
   final showFAB;
   final showDrawer;
   final backGroundColor;
@@ -35,22 +35,22 @@ class CommonScaffold extends StatelessWidget {
         shape: CircularNotchedRectangle(),
         child: Ink(
           height: 50.0,
-          decoration: new BoxDecoration(
-              gradient: new LinearGradient(colors: UIData.kitGradients)),
-          child: new Row(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: UIData.kitGradients)),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
                 height: double.infinity,
-                child: new InkWell(
+                child: InkWell(
                   radius: 10.0,
                   splashColor: Colors.yellow,
                   onTap: () {},
                   child: Center(
-                    child: new Text(
+                    child: Text(
                       "ADD TO WISHLIST",
-                      style: new TextStyle(
+                      style: TextStyle(
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
@@ -58,19 +58,19 @@ class CommonScaffold extends StatelessWidget {
                   ),
                 ),
               ),
-              new SizedBox(
+              SizedBox(
                 width: 20.0,
               ),
               SizedBox(
                 height: double.infinity,
-                child: new InkWell(
+                child: InkWell(
                   onTap: () {},
                   radius: 10.0,
                   splashColor: Colors.yellow,
                   child: Center(
-                    child: new Text(
+                    child: Text(
                       "ORDER PAGE",
-                      style: new TextStyle(
+                      style: TextStyle(
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
@@ -106,7 +106,7 @@ class CommonScaffold extends StatelessWidget {
           )
         ],
       ),
-      drawer: showDrawer ? CommonDrawer(auth: new Auth()) : null,
+      drawer: showDrawer ? CommonDrawer(auth: Auth()) : null,
       body: bodyData,
       floatingActionButton: showFAB
           ? CustomFloat(

@@ -5,7 +5,7 @@ import 'package:flutter_feed/ui_data.dart';
 class MenuViewModel {
   List<Menu> menuItems;
 
-  MenuViewModel({this.menuItems});
+  MenuViewModel({required this.menuItems});
 
   getMenuItems() {
     return menuItems = <Menu>[

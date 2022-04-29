@@ -8,28 +8,25 @@ import 'package:flutter_feed/widgets/common_scaffold.dart';
 import 'package:flutter_feed/widgets/profile_tile.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key key, this.auth}) : super(key: key);
+  ProfilePage({ Key? key, required this.auth}) : super(key: key);
   final AuthImpl auth;
 
   @override
   State<StatefulWidget> createState() =>
-      // TODO: implement createState
-      new _ProfileState();
+       _ProfileState();
 }
 
 class _ProfileState extends State<ProfilePage> {
-  Size deviceSize;
-  FirebaseUser firebaseUser;
+  Size? deviceSize;
+  User? firebaseUser;
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
 
   @override
   void initState() {
-// Here you can write your code
     getUser();
   }
 
@@ -45,7 +42,7 @@ class _ProfileState extends State<ProfilePage> {
   }
 
   Widget profileHeader() => Container(
-        height: deviceSize.height / 4,
+        height: deviceSize!.height / 4,
         width: double.infinity,
         color: Colors.black,
         child: Padding(
@@ -72,7 +69,7 @@ class _ProfileState extends State<ProfilePage> {
                     style: TextStyle(color: Colors.white, fontSize: 20.0),
                   ),
                   Text(
-                    firebaseUser.email,
+                    firebaseUser!.email!,
                     style: TextStyle(color: Colors.white),
                   )
                 ],
@@ -83,7 +80,7 @@ class _ProfileState extends State<ProfilePage> {
       );
 
   Widget imagesCard() => Container(
-        height: deviceSize.height / 6,
+        height: deviceSize!.height / 6,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
           child: Column(
@@ -149,7 +146,7 @@ class _ProfileState extends State<ProfilePage> {
 
   Widget postCard() => Container(
         width: double.infinity,
-        height: deviceSize.height / 3,
+        height: deviceSize!.height / 3,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
           child: Column(
@@ -181,7 +178,7 @@ class _ProfileState extends State<ProfilePage> {
         child: Column(
           children: <Widget>[
             profileHeader(),
-            followColumn(deviceSize),
+            followColumn(deviceSize!),
             imagesCard(),
             postCard(),
             postCard(),

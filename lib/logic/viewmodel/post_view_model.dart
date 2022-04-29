@@ -3,7 +3,7 @@ import 'package:flutter_feed/model/post.dart';
 class PostViewModel {
   List<Post> postItems;
 
-  PostViewModel({this.postItems});
+  PostViewModel({required this.postItems});
 
   getPosts() => <Post>[
         Post(

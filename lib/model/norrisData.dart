@@ -1,9 +1,9 @@
 class NorrisData {
-  final String category;
-  final String iconUrl;
-  final String id;
-  final String url;
-  final String value;
+  final String? category;
+  final String? iconUrl;
+  final String? id;
+  final String? url;
+  final String? value;
 
   NorrisData({this.category, this.iconUrl, this.id, this.url, this.value});
 

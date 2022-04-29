@@ -53,7 +53,7 @@ class UIData {
   static const String shoppingImage = "$imageDir/shopping.jpeg";
   static const String timelineImage = "$imageDir/timeline.jpeg";
   static const String verifyImage = "$imageDir/verification.jpg";
-  static const String mapsImage="$imageDir/maps.jpeg";
+  static const String mapsImage = "$imageDir/maps.jpeg";
 
   //login
   static const String enter_code_label = "Phone Number";
@@ -90,7 +90,7 @@ class UIData {
   ];
 
   //randomcolor
-  static final Random _random = new Random();
+  static final Random _random = Random();
 
   /// Returns a random color.
   static Color next() {

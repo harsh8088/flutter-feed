@@ -5,7 +5,7 @@ import 'package:flutter_feed/model/product.dart';
 
 
 class ProductBloc {
-  final ProductViewModel productViewModel = ProductViewModel();
+  final ProductViewModel productViewModel = ProductViewModel(productsItems: []);
   final productController = StreamController<List<Product>>();
   Stream<List<Product>> get productItems => productController.stream;
 

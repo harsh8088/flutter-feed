@@ -23,25 +23,25 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.amber),
       debugShowCheckedModeBanner: false,
       showPerformanceOverlay: false,
-      home: new RootPage(auth: new Auth()),
+      home: HomePage(auth: Auth()),
       //  initialRoute: UIData.mRoute,
 
       //routes
       routes: <String, WidgetBuilder>{
-        UIData.homeRoute: (BuildContext context) => HomePage(auth: new Auth()),
+        UIData.homeRoute: (BuildContext context) => HomePage(auth: Auth()),
         UIData.profileRoute: (BuildContext context) =>
-            ProfilePage(auth: new Auth()),
+            ProfilePage(auth: Auth()),
         UIData.timelineOneRoute: (BuildContext context) => TimelineOnePage(),
-        UIData.jokesRoute:(BuildContext context)=> JokesPage(),
+        UIData.jokesRoute: (BuildContext context) => JokesPage(),
         UIData.shoppingRoute: (BuildContext context) => ShoppingPage(),
         UIData.loginRoute: (BuildContext context) => LoginPage(),
         UIData.creditCardRoute: (BuildContext context) => CreditCardPage(),
-        UIData.weatherRoute:(BuildContext context)=> WeatherPage(),
-        UIData.cameraRoute:(BuildContext context)=> CameraApp(),
-        UIData.mapsRoute:(BuildContext context)=>MapPage(),
+        UIData.weatherRoute: (BuildContext context) => WeatherPage(),
+        UIData.cameraRoute: (BuildContext context) => CameraApp(),
+        UIData.mapsRoute: (BuildContext context) => MapPage(),
       },
-      onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
-          builder: (context) => new NotFoundPage(
+      onUnknownRoute: (RouteSettings rs) => MaterialPageRoute(
+          builder: (context) => NotFoundPage(
                 appTitle: UIData.coming_soon,
                 icon: Icons.account_balance,
                 title: UIData.coming_soon,

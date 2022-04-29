@@ -18,25 +18,24 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   bool isLoading = false;
-  WeatherData weatherData;
-  ForecastData forecastData;
-  Location _location = new Location();
-  String error;
+  WeatherData? weatherData;
+  ForecastData? forecastData;
+  Location _location = Location();
+  String? error;
 
   @override
   void initState() {
     super.initState();
-
     loadWeather();
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        body: new Container(
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new NetworkImage(UIData.weatherSunny),
+    return Scaffold(
+        body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(UIData.weatherSunny),
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,8 +45,9 @@ class _WeatherPageState extends State<WeatherPage> {
                   title: Text('Weather'),
                 ),
                 body: Center(
-                    child: Column(mainAxisSize: MainAxisSize.min, children: <
-                        Widget>[
+                    child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
                       Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,16 +62,16 @@ class _WeatherPageState extends State<WeatherPage> {
                               padding: const EdgeInsets.all(8.0),
                               child: isLoading
                                   ? CircularProgressIndicator(
-                                strokeWidth: 2.0,
-                                valueColor:
-                                new AlwaysStoppedAnimation(Colors.yellow),
-                              )
+                                      strokeWidth: 2.0,
+                                      valueColor:
+                                          AlwaysStoppedAnimation(Colors.yellow),
+                                    )
                                   : IconButton(
-                                icon: new Icon(Icons.refresh),
-                                tooltip: 'Refresh',
-                                onPressed: loadWeather,
-                                color: Colors.white,
-                              ),
+                                      icon: Icon(Icons.refresh),
+                                      tooltip: 'Refresh',
+                                      onPressed: loadWeather,
+                                      color: Colors.white,
+                                    ),
                             ),
                           ],
                         ),
@@ -83,12 +83,12 @@ class _WeatherPageState extends State<WeatherPage> {
                             height: 200.0,
                             child: forecastData != null
                                 ? ListView.builder(
-                                itemCount: forecastData.list.length,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) =>
-                                    WeatherItem(
-                                        weather:
-                                        forecastData.list.elementAt(index)))
+                                    itemCount: forecastData!.list!.length,
+                                    scrollDirection: Axis.horizontal,
+                                    itemBuilder: (context, index) =>
+                                        WeatherItem(
+                                            weather: forecastData!.list!
+                                                .elementAt(index)))
                                 : Container(),
                           ),
                         ),
@@ -102,7 +102,7 @@ class _WeatherPageState extends State<WeatherPage> {
     });
 
     // Map<String, double> location;
-    LocationData location;
+    LocationData? location;
 
     try {
       location = await _location.getLocation();
@@ -113,7 +113,7 @@ class _WeatherPageState extends State<WeatherPage> {
         error = 'Permission denied';
       } else if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
         error =
-        'Permission denied - please ask the user to enable it from the app settings';
+            'Permission denied - please ask the user to enable it from the app settings';
       }
 
       location = null;
@@ -123,22 +123,17 @@ class _WeatherPageState extends State<WeatherPage> {
       final lat = location.latitude;
       final lon = location.longitude;
 
-      final weatherResponse = await http.get(
-          'https://api.openweathermap.org/data/2.5/weather?APPID=${UIData
-              .ApiKey}&lat=${lat.toString()}&lon=${lon
-              .toString()}&units=metric');
-      final forecastResponse = await http.get(
-          'https://api.openweathermap.org/data/2.5/forecast?APPID=${UIData
-              .ApiKey}&lat=${lat.toString()}&lon=${lon
-              .toString()}&units=metric');
+      final weatherResponse = await http.get(Uri.parse(
+          'https://api.openweathermap.org/data/2.5/weather?APPID=${UIData.ApiKey}&lat=${lat.toString()}&lon=${lon.toString()}&units=metric'));
+      final forecastResponse = await http.get(Uri.parse(
+          'https://api.openweathermap.org/data/2.5/forecast?APPID=${UIData.ApiKey}&lat=${lat.toString()}&lon=${lon.toString()}&units=metric'));
 
       if (weatherResponse.statusCode == 200 &&
           forecastResponse.statusCode == 200) {
         return setState(() {
-          weatherData =
-          new WeatherData.fromJson(jsonDecode(weatherResponse.body));
+          weatherData = WeatherData.fromJson(jsonDecode(weatherResponse.body));
           forecastData =
-          new ForecastData.fromJson(jsonDecode(forecastResponse.body));
+              ForecastData.fromJson(jsonDecode(forecastResponse.body));
           isLoading = false;
         });
       }
