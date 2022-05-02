@@ -2,6 +2,7 @@
 
 A new Flutter application for the implementation of FirebaseDB, GoogleMaps, Weather Info, Camera, Location and third party libraries.
 
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
