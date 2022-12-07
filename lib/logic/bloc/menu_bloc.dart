@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_feed/logic/viewmodel/menu_view_model.dart';
-import 'package:flutter_feed/model/menu.dart';
+import '../../model/menu.dart';
+import '../viewmodel/menu_view_model.dart';
+
 
 
 class MenuBloc {

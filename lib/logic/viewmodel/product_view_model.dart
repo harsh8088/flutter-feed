@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feed/model/product.dart';
+
+import '../../model/product.dart';
+
 
 class ProductViewModel {
   List<Product> productsItems;

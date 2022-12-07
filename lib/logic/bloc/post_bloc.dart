@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_feed/logic/viewmodel/post_view_model.dart';
-import 'package:flutter_feed/model/post.dart';
+import '../../model/post.dart';
+import '../viewmodel/post_view_model.dart';
+
 
 
 class PostBloc {

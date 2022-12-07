@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_feed/widgets/about_tile.dart';
 import 'package:flutter_feed/fblogin/auth.dart';
 import 'package:flutter_feed/ui_data.dart';
+import 'package:flutter_feed/widgets/about_tile.dart';
 
 class CommonDrawer extends StatefulWidget {
   CommonDrawer({Key? key, this.auth, this.onSignedOut}) : super(key: key);
@@ -15,11 +15,12 @@ class CommonDrawer extends StatefulWidget {
 }
 
 class _CommonDrawer extends State<CommonDrawer> {
-  late User firebaseUser;
+   User? firebaseUser;
 
   @override
   void initState() {
-    widget.auth!.getCurrentUser().then((user) {
+    super.initState();
+     widget.auth!.getCurrentUser().then((user) {
       setState(() {
         firebaseUser = (user?.uid == null ? null : user)!;
       });
@@ -34,10 +35,10 @@ class _CommonDrawer extends State<CommonDrawer> {
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text(
-              firebaseUser.displayName.toString(),
+              '{firebaseUser!.displayName}',
             ),
             accountEmail: Text(
-              firebaseUser.email.toString(),
+              '{firebaseUser!.email}',
             ),
             currentAccountPicture: CircleAvatar(
               backgroundImage: AssetImage(UIData.pkImage),

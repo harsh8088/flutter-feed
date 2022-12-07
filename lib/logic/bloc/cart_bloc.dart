@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_feed/logic/viewmodel/cart_view_model.dart';
-import 'package:flutter_feed/model/product.dart';
+
+import '../../model/product.dart';
+import '../viewmodel/cart_view_model.dart';
 
 class CartBloc {
   late CartViewModel _cartViewModel;

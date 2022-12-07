@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_feed/logic/viewmodel/product_view_model.dart';
-import 'package:flutter_feed/model/product.dart';
+import '../../model/product.dart';
+import '../viewmodel/product_view_model.dart';
+
 
 
 class ProductBloc {

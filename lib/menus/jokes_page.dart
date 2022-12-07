@@ -207,10 +207,10 @@ class _JokeState extends State<JokesPage> {
                   ],
                 ),
                 Align(
-                    alignment: Alignment(1.0, 0.0),
-                    child: Image(
+                    alignment: Alignment.center,
+                    child: Image.asset('assets/images/chuck_norriss.gif',
                       alignment: Alignment(1.0, 0.1),
-                      image: NetworkImage(norrisData!.iconUrl!),
+                      // image: NetworkImage(norrisData!.iconUrl!),
                     ))
               ],
             ),

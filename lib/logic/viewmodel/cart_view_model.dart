@@ -1,4 +1,5 @@
-import 'package:flutter_feed/model/product.dart';
+
+import '../../model/product.dart';
 
 class CartViewModel {
   final Product? product;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feed/model/menu.dart';
-import 'package:flutter_feed/ui_data.dart';
+
+import '../../model/menu.dart';
+import '../../ui_data.dart';
 
 class MenuViewModel {
   List<Menu> menuItems;

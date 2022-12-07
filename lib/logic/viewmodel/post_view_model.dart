@@ -1,4 +1,5 @@
-import 'package:flutter_feed/model/post.dart';
+
+import '../../model/post.dart';
 
 class PostViewModel {
   List<Post> postItems;

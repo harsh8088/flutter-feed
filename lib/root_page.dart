@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_feed/fblogin/auth.dart';
-import 'package:flutter_feed/menus/login_page.dart';
-import 'package:flutter_feed/home_page.dart';
+
+import 'fblogin/auth.dart';
+import 'home_page.dart';
+import 'menus/login_page.dart';
 
 class RootPage extends StatefulWidget {
   RootPage({this.auth});

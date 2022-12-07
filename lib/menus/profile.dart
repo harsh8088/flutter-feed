@@ -27,6 +27,7 @@ class _ProfileState extends State<ProfilePage> {
 
   @override
   void initState() {
+    super.initState();
     getUser();
   }
 
@@ -68,10 +69,10 @@ class _ProfileState extends State<ProfilePage> {
                     "",
                     style: TextStyle(color: Colors.white, fontSize: 20.0),
                   ),
-                  Text(
-                    firebaseUser!.email!,
-                    style: TextStyle(color: Colors.white),
-                  )
+                  // Text(
+                  //   firebaseUser!.email!,
+                  //   style: TextStyle(color: Colors.white),
+                  // )
                 ],
               ),
             ),

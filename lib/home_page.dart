@@ -256,14 +256,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _writeData() {
-    database.reference().child("message").set({"first": "David"});
+    database.ref().child("message").set({"first": "David"});
   }
 
   void _readData() {
     setState(() {
       Completer<String> completer = new Completer<String>();
       DataSnapshot snapshot;
-      database.reference().child("message").once().then((value) => {
+      database.ref().child("message").once().then((value) => {
             // snapshot = value.snapshot;
           });
       //     .then((DataSnapshot snapshot) async {

@@ -93,6 +93,10 @@ class TimelineOnePage extends StatelessWidget {
               ? Image.network(
                   post.messageImage!,
                   fit: BoxFit.cover,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return const Text('💀');
+              }
                 )
               : Container(),
           post.messageImage != null ? Container() : CommonDivider(),
